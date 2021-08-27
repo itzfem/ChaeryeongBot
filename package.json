@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^13.1.0",
+    "firebase": "^9.0.0",
+    "firebase-admin": "^9.11.1"
+  },
+  "name": "chaeryeongbot-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

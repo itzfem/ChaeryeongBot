@@ -41,6 +41,28 @@ client.on("messageCreate", msg => {
         msg.reply("pong!");
     }
 
+    else if (command === "help") {
+        const helpEmbed = new Discord.MessageEmbed()
+        .setTitle("Commands:")
+        .setColor("#FFFFFF")
+        .setDescription(`**__BASIC__**
+                        **ping**: _replies with pong_
+                         **help**: _replies with all commands_
+
+                         **__LAST.FM__**
+                         **set**: _set your last.fm username_
+                         **toptracks**: _view your top 10 tracks_
+                         **topartists**: _view your top 10 artists_
+                         
+                         **__CONFIGURATION__**
+                         **prefix**: _set prefix_
+                         
+                         **__OTHERS__**
+                         **stream**: _sends an ITZY MV to stream_
+                         `)
+        msg.channel.send({embeds: [helpEmbed]});
+    }
+
     else if (command === "stream") {
         let rndMV = Math.floor(Math.random() * Math.floor(otherData.musicVideos.length));
         msg.channel.send(otherData.musicVideos[rndMV]);

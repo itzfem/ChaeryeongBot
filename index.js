@@ -90,6 +90,22 @@ client.on("messageCreate", msg => {
         }
     }
 
+    else if (command === "sendgif") {
+        switch(args[0].toLowerCase()) {
+            case "chaeryeong":
+                let rndGif = Math.floor(Math.random() * Math.floor(otherData.chaeryeongGifs.length));
+                const gifEmbed = new Discord.MessageEmbed()
+                    .setColor('#FFFFFF')
+                    .setTitle("A Chaeryeong gif for you!")
+                    .setImage(otherData.chaeryeongGifs[rndGif])
+                msg.channel.send({embeds: [gifEmbed]});
+            break;
+
+            default:
+                msg.channel.send("Please provide an ITZY member!");
+        }
+    }
+
     else if (command === "set") {
         users.doc(msg.author.id).get().then((doc) => {
             if (doc.exists) {

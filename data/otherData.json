@@ -34,7 +34,13 @@
         "https://www.youtube.com/watch?v=_ysomCGaZLw&ab_channel=JYPEntertainment"
     ],
 
-    "gifs": [
-        
+    "chaeryeongGifs": [
+        "https://64.media.tumblr.com/a08d9c0355a4a69239b7d49b19810306/d9c9b8972a83611d-07/s400x600/ff42f87556f8b6ff3c96b4044767d0eb2c3fe0cf.gif",
+        "https://64.media.tumblr.com/6236b51f6cc3a517f97765f56d29f24e/a7ce43515bc935f0-e8/s540x810/c8db8221969dfd1240780cb523c7d31079aded5a.gif",
+        "https://64.media.tumblr.com/2dcd2752040fcba035ef0cdd09059bb0/4e98d8ded8f7a01d-59/s400x600/604c0bf9441618a2c334ced9392f62575fec1614.gif"
+    ],
+    
+    "yejiGifs": [
+
     ]
 }

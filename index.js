@@ -31,10 +31,17 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", msg => {
-    if (msg.author.bot) return;
-    if (msg.content.indexOf(config.prefix) !== 0) return;
 
-    const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+    db.collection("servers").doc(msg.guild.id).get().then((doc) => {
+        if (doc.exists) {
+            prefix = doc.data().prefix;
+        }
+    })
+    .then (() => {
+        if (msg.author.bot) return;
+    if (msg.content.indexOf(prefix) !== 0) return;
+
+    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     if (command === "ping") { 
@@ -55,7 +62,7 @@ client.on("messageCreate", msg => {
                          **topartists**: _view your top 10 artists_
                          
                          **__CONFIGURATION__**
-                         **prefix**: _set prefix_
+                         **prefix**: _set prefix_ 
                          
                          **__OTHERS__**
                          **stream**: _sends an ITZY MV to stream_
@@ -66,6 +73,21 @@ client.on("messageCreate", msg => {
     else if (command === "stream") {
         let rndMV = Math.floor(Math.random() * Math.floor(otherData.musicVideos.length));
         msg.channel.send(otherData.musicVideos[rndMV]);
+    }
+
+    else if (command === "setprefix") {
+        if(args.length === 0) {
+            msg.channel.send("No prefix was provided! Please try again!")
+        }
+        else if (args.length === 1) {
+            let newPrefix = args[0];
+
+            db.collection("servers").doc(msg.guild.id).update({
+                prefix: newPrefix
+            }).then(() => {
+                msg.channel.send(`Prefix has been changed to ${newPrefix}!`)
+            })
+        }
     }
 
     else if (command === "set") {
@@ -125,7 +147,20 @@ client.on("messageCreate", msg => {
             }
         })
     }
+    })
+
+    
 }) 
+
+client.on('guildCreate', serverData => {
+    console.log("Joined a new server called " + serverData.name)
+    db.collection("servers").doc(serverData.id).set({
+        serverID: serverData.id,
+        serverName: serverData.name,
+        serverMemberCount: serverData.memberCount,
+        prefix: '$'
+    })
+})
 
 function nowPlaying(user, msg) {
     const METHOD = 'user.getRecentTracks';

@@ -91,18 +91,54 @@ client.on("messageCreate", msg => {
     }
 
     else if (command === "sendgif") {
-        switch(args[0].toLowerCase()) {
-            case "chaeryeong":
-                let rndGif = Math.floor(Math.random() * Math.floor(otherData.chaeryeongGifs.length));
-                const gifEmbed = new Discord.MessageEmbed()
-                    .setColor('#FFFFFF')
-                    .setTitle("A Chaeryeong gif for you!")
-                    .setImage(otherData.chaeryeongGifs[rndGif])
-                msg.channel.send({embeds: [gifEmbed]});
-            break;
-
-            default:
-                msg.channel.send("Please provide an ITZY member!");
+        if (args.length === 0) {
+            msg.channel.send("Please provide an ITZY member!");
+        }
+        else {
+            switch(args[0].toLowerCase()) {
+                case "chaeryeong":
+                    let rndCYGif = Math.floor(Math.random() * Math.floor(otherData.chaeryeongGifs.length));
+                    const gifCYEmbed = new Discord.MessageEmbed()
+                        .setColor('#FFFFFF')
+                        .setTitle("A Chaeryeong gif for you!")
+                        .setImage(otherData.chaeryeongGifs[rndCYGif])
+                    msg.channel.send({embeds: [gifCYEmbed]});
+                break;
+                case "yeji":
+                    let rndYJGif = Math.floor(Math.random() * Math.floor(otherData.yejiGifs.length));
+                    const gifYJEmbed = new Discord.MessageEmbed()
+                        .setColor('#FFFFFF')
+                        .setTitle("A Yeji gif for you!")
+                        .setImage(otherData.yejiGifs[rndYJGif])
+                    msg.channel.send({embeds: [gifYJEmbed]});
+                break;
+                case "lia":
+                    let rndLIGif = Math.floor(Math.random() * Math.floor(otherData.liaGifs.length));
+                    const gifLIEmbed = new Discord.MessageEmbed()
+                        .setColor('#FFFFFF')
+                        .setTitle("A Lia gif for you!")
+                        .setImage(otherData.liaGifs[rndLIGif])
+                    msg.channel.send({embeds: [gifLIEmbed]});
+                break;
+                case "ryujin":
+                    let rndRJGif = Math.floor(Math.random() * Math.floor(otherData.ryujinGifs.length));
+                    const gifRJEmbed = new Discord.MessageEmbed()
+                        .setColor('#FFFFFF')
+                        .setTitle("A Ryujin gif for you!")
+                        .setImage(otherData.ryujinGifs[rndRJGif])
+                    msg.channel.send({embeds: [gifRJEmbed]});
+                break;
+                case "yuna":
+                    let rndYNGif = Math.floor(Math.random() * Math.floor(otherData.yunaGifs.length));
+                    const gifYNEmbed = new Discord.MessageEmbed()
+                        .setColor('#FFFFFF')
+                        .setTitle("A Yuna gif for you!")
+                        .setImage(otherData.yunaGifs[rndYNGif])
+                    msg.channel.send({embeds: [gifYNEmbed]});
+                break;
+                default:
+                    msg.channel.send("Please provide an ITZY member!");
+            }
         }
     }
 
@@ -164,8 +200,6 @@ client.on("messageCreate", msg => {
         })
     }
     })
-
-    
 }) 
 
 client.on('guildCreate', serverData => {

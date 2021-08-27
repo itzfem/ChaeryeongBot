@@ -52,6 +52,7 @@ client.on("messageCreate", msg => {
         const helpEmbed = new Discord.MessageEmbed()
         .setTitle("Commands:")
         .setColor("#FFFFFF")
+        .setThumbnail(client.user.avatarURL())
         .setDescription(`**__BASIC__**
                         **ping**: _replies with pong_
                          **help**: _replies with all commands_
@@ -66,6 +67,7 @@ client.on("messageCreate", msg => {
                          
                          **__OTHERS__**
                          **stream**: _sends an ITZY MV to stream_
+                         **sendgif [ITZY member]**: _sends a gif of an ITZY member_
                          `)
         msg.channel.send({embeds: [helpEmbed]});
     }
